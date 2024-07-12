@@ -8,8 +8,8 @@ Here an example of the [Insertion Sort](https://github.com/NelsonBN/algorithms-d
 ## Characteristics
 - Time complexity:
     - Best: Ω(n log(n)) -> Depends on the gap sequence
-    - Average: Θ(n (log(n))^2) -> Depends on the gap sequence
-    - Worst: O(n (log(n))^2) -> Depends on the gap sequence
+    - Average: Θ(n^(3/2)) -> Depends on the gap sequence
+    - Worst: O(n^2) -> Depends on the gap sequence
 - Space complexity: O(1)
 - In-place
 - Unstable
