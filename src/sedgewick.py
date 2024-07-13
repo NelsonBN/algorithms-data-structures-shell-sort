@@ -21,14 +21,11 @@ def shell_sort(arr):
 
         # Insertion sort for each gap
         for i in range(gap, n):
-            curr = arr[i]
             j = i
 
-            while j >= gap and arr[j - gap] > curr:
-                arr[j] = arr[j - gap]
+            while j >= gap and arr[j - gap] > arr[j]:
+                arr[j], arr[j - gap] = arr[j - gap], arr[j]
                 j -= gap
-
-            arr[j] = curr
 
 
 array = [5, 3, 21, 13, 1, 7, 6, 15]

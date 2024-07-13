@@ -15,14 +15,11 @@ def shell_sort(arr):
 
         # Insertion sort for each gap
         for i in range(gap, n):
-            curr = arr[i]
             j = i
 
-            while j >= gap and arr[j - gap] > curr:
-                arr[j] = arr[j - gap]
+            while j >= gap and arr[j - gap] > arr[j]:
+                arr[j], arr[j - gap] = arr[j - gap], arr[j]
                 j -= gap
-
-            arr[j] = curr
 
         # Reduce the gap for the next sequence
         gap = (gap - 1) // 3

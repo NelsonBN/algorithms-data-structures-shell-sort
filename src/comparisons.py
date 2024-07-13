@@ -8,20 +8,18 @@ def insert_sort(arr):
     n = len(arr)
 
     for i in range(1, n):
-        curr = arr[i]
         j = i
 
         while j > 0:
             total_comparisons += 1
 
-            if arr[j - 1] > curr:
+            if arr[j - 1] > arr[j]:
                 total_swaps += 1
-                arr[j] = arr[j - 1]
+                arr[j], arr[j - 1] = arr[j - 1], arr[j]
                 j -= 1
             else:
                 break
 
-        arr[j] = curr
 
     return total_swaps, total_comparisons
 
@@ -36,20 +34,17 @@ def shell_sort(arr):
 
     while gap > 0:
         for i in range(gap, n):
-            curr = arr[i]
             j = i
 
             while j >= gap:
                 total_comparisons += 1
 
-                if arr[j - gap] > curr:
+                if arr[j - gap] > arr[j]:
                     total_swaps += 1
                     arr[j] = arr[j - gap]
                     j -= gap
                 else:
                     break
-
-            arr[j] = curr
 
         gap //= 2
 
@@ -70,24 +65,55 @@ def shell_sort_knuth(arr):
 
     while gap > 0:
         for i in range(gap, n):
-            curr = arr[i]
             j = i
 
             while j >= gap:
                 total_comparisons += 1
 
-                if arr[j - gap] > curr:
+                if arr[j - gap] > arr[j]:
                     total_swaps += 1
                     arr[j] = arr[j - gap]
                     j -= gap
                 else:
                     break
 
-            arr[j] = curr
-
         gap = (gap - 1) // 3
 
     return total_swaps, total_comparisons
+
+
+
+def shell_sort_hibbard(arr):
+    total_swaps = 0
+    total_comparisons = 0
+
+    n = len(arr)
+
+    gaps = []
+    k = 1
+    while (2**k - 1) < n:
+        gaps.append(2**k - 1)
+        k += 1
+
+    gaps.reverse()
+
+    for gap in gaps:
+
+        for i in range(gap, n):
+            j = i
+
+            while j >= gap:
+                total_comparisons += 1
+
+                if arr[j - gap] > arr[j]:
+                    total_swaps += 1
+                    arr[j] = arr[j - gap]
+                    j -= gap
+                else:
+                    break
+
+    return total_swaps, total_comparisons
+
 
 
 def shell_sort_sedgewick(arr):
@@ -96,7 +122,6 @@ def shell_sort_sedgewick(arr):
 
     n = len(arr)
 
-    # Generate the sedgewick sequence of gaps
     gaps = []
     k = 0
     while True:
@@ -111,25 +136,20 @@ def shell_sort_sedgewick(arr):
 
     gaps.reverse()
 
-    # Loop over the gaps
     for gap in gaps:
 
-        # Insertion sort for each gap
         for i in range(gap, n):
-            curr = arr[i]
             j = i
 
             while j >= gap:
                 total_comparisons += 1
 
-                if arr[j - gap] > curr:
+                if arr[j - gap] > arr[j]:
                     total_swaps += 1
                     arr[j] = arr[j - gap]
                     j -= gap
                 else:
                     break
-
-            arr[j] = curr
 
     return total_swaps, total_comparisons
 
@@ -141,6 +161,7 @@ total_items = 30
 array_insert = [random.randint(0, 100) for _ in range(total_items)]
 array_shell = array_insert.copy()
 array_knuth = array_insert.copy()
+array_hibbard = array_insert.copy()
 array_sedgewick = array_insert.copy()
 
 
@@ -164,6 +185,14 @@ print("\nShell Sort - Knuth's sequence")
 print("Before: ", array_knuth)
 swaps, comparisons = shell_sort_knuth(array_knuth)
 print("After: ", array_knuth)
+print("Total swaps: ", swaps)
+print("Total comparisons: ", comparisons)
+
+
+print("\nShell Sort - Hibbard's sequence")
+print("Before: ", array_hibbard)
+swaps, comparisons = shell_sort_hibbard(array_hibbard)
+print("After: ", array_hibbard)
 print("Total swaps: ", swaps)
 print("Total comparisons: ", comparisons)
 

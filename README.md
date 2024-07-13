@@ -16,7 +16,8 @@ Here an example of the [Insertion Sort](https://github.com/NelsonBN/algorithms-d
 
 
 ## Demos:
-- [Original Implementation](./src/basic.py)
+- [Original Implementation with tmp variable](./src/with_tmp_variable.py)
+- [Original Implementation without tmp variable](./src/without_tmp_variable.py)
 - [Knuth's Sequence](./src/knuth.py)
 - [Hibbard's Sequence](./src/hibbard.py)
 - [Sedgewick's Sequence](./src/sedgewick.py)

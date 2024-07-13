@@ -1,17 +1,9 @@
 def shell_sort(arr):
     n = len(arr)
-
-    # Generate the Hibbard sequence of gaps (2^k - 1)
-    gaps = []
-    k = 1
-    while (2**k - 1) < n:
-        gaps.append(2**k - 1)
-        k += 1
-
-    gaps.reverse()
+    gap = n // 2 # Inicialization of gap as half of the length of the list
 
     # Loop over the gaps
-    for gap in gaps:
+    while gap > 0:
 
         # Insertion sort for each gap
         for i in range(gap, n):
@@ -20,6 +12,9 @@ def shell_sort(arr):
             while j >= gap and arr[j - gap] > arr[j]:
                 arr[j], arr[j - gap] = arr[j - gap], arr[j]
                 j -= gap
+
+        # Reduce the gap
+        gap //= 2
 
 
 array = [5, 3, 21, 13, 1, 7, 6, 15]
