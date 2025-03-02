@@ -29,5 +29,5 @@ Here an example of the [Insertion Sort](https://github.com/NelsonBN/algorithms-d
 
 
 ## References
-- [Other algoritmos & Data Structures](https://github.com/NelsonBN/algorithms-data-structures)
+- [Other Algorithms & Data Structures](https://github.com/NelsonBN/algorithms-data-structures)
 - [A High-Speed Sorting Procedure - D.L. Shell](https://dl.acm.org/doi/pdf/10.1145/368370.368387)
